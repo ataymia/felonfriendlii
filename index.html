@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FelonyFriendlii</title>
+  <meta name="description" content="Resources and housing friendly to people with felony records." />
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="./">
+        <img class="brand-logo" src="images/logo.svg" alt="FelonyFriendlii" />
+        <span class="brand-name">FelonyFriendlii</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./resources.html">Resources</a></li>
+        <li><a href="./housing-search.html">Housing Search</a></li>
+        <li><a href="./submit.html">Submit</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Find resources that don't hold your past against you</h1>
+        <p class="muted">Curated places for housing, food, clothes, trades, and more — friendly to people with felony records.</p>
+        <form class="search" action="resources.html" method="get">
+          <input name="q" type="search" placeholder="Search all resources" aria-label="Search all resources" />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">Browse by category</h2>
+      <div class="grid">
+        <a class="tile" href="resources.html?cat=apartments" aria-label="Apartments">
+          <div class="tile-emoji" aria-hidden>🏢</div>
+          <div class="tile-title">Apartments</div>
+        </a>
+        <a class="tile" href="resources.html?cat=halfway-houses" aria-label="Halfway Houses">
+          <div class="tile-emoji" aria-hidden>🏠</div>
+          <div class="tile-title">Halfway Houses</div>
+        </a>
+        <a class="tile" href="resources.html?cat=trades" aria-label="Trades">
+          <div class="tile-emoji" aria-hidden>🛠️</div>
+          <div class="tile-title">Trades</div>
+        </a>
+        <a class="tile" href="resources.html?cat=food" aria-label="Food">
+          <div class="tile-emoji" aria-hidden>🍽️</div>
+          <div class="tile-title">Food</div>
+        </a>
+        <a class="tile" href="resources.html?cat=clothes" aria-label="Clothes">
+          <div class="tile-emoji" aria-hidden>👕</div>
+          <div class="tile-title">Clothes</div>
+        </a>
+        <a class="tile" href="housing-search.html" aria-label="Home Search">
+          <div class="tile-emoji" aria-hidden>🔎</div>
+          <div class="tile-title">Home Search</div>
+        </a>
+        <a class="tile" href="resources.html?tag=veteran" aria-label="Veteran">
+          <div class="tile-emoji" aria-hidden>🎖️</div>
+          <div class="tile-title">Veteran</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> FelonyFriendlii</p>
+    </div>
+  </footer>
+</body>
+</html>
