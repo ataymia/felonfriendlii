@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200" role="img" aria-label="Felon Friendly Resources">
+  <defs>
+    <style>
+      .word { fill: #374151; font: 700 56px/1 "Arial", "Helvetica Neue", Helvetica, sans-serif; }
+      .house { fill: #374151; }
+    </style>
+  </defs>
+  <!-- Words (stacked) -->
+  <text class="word" x="20" y="70">Felon</text>
+  <text class="word" x="20" y="125">Friendly</text>
+  <text class="word" x="20" y="180">Resources</text>
+  <!-- Simple house icon on right -->
+  <g class="house" transform="translate(470,40)">
+    <path d="M70 20 L120 60 L120 150 L20 150 L20 60 Z"/>
+    <circle cx="55" cy="85" r="6" fill="#fff"/>
+    <circle cx="85" cy="85" r="6" fill="#fff"/>
+    <path d="M65 150 L65 120 A10 10 0 0 1 85 120 L85 150 Z" fill="#fff"/>
+  </g>
+</svg>
