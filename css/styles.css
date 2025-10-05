@@ -65,9 +65,9 @@ img { max-width: 100%; display: block; }
 .hero { border-bottom: 1px solid var(--border); }
 .hero--skyline {
   background:
-    linear-gradient(180deg, #f1f5f9 0%, #ffffff 40%),
-    url("../images/phoenix-skyline.svg") top center repeat-x;
-  background-size: auto 140px, auto;
+    url("../images/phoenix-skyline.jpg") top center no-repeat,
+    linear-gradient(180deg, #f1f5f9 0%, #ffffff 40%);
+  background-size: cover, auto;
 }
 .hero-content { padding: 36px 16px 28px; }
 .hero-top { display: flex; align-items: center; justify-content: flex-start; }
