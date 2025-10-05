@@ -1,9 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Set footer year
+  // Footer year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Render resources on resources.html
+  // Expandable "F" menu
+  const toggle = document.querySelector(".menu-toggle");
+  const panel = document.getElementById("menu-panel");
+  if (toggle && panel) {
+    const closeMenu = () => {
+      toggle.setAttribute("aria-expanded", "false");
+      panel.hidden = true;
+    };
+    const openMenu = () => {
+      toggle.setAttribute("aria-expanded", "true");
+      panel.hidden = false;
+    };
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      if (expanded) closeMenu(); else openMenu();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+    document.addEventListener("click", (e) => {
+      if (!panel.hidden && !panel.contains(e.target) && !toggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Render resources on resources.html (kept for deep links)
   const list = document.getElementById("resources-list");
   if (list) {
     const params = new URLSearchParams(window.location.search);
@@ -11,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cat = (params.get("cat") || "").toLowerCase().trim();
     const tag = (params.get("tag") || "").toLowerCase().trim();
 
-    // Minimal starter data. You can edit/expand this right here.
     const RESOURCES = [
       {
         title: "Open Arms Apartments",
@@ -68,8 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (q) parts.push(`search "${q}"`);
       if (cat) parts.push(`category "${cat}"`);
       if (tag) parts.push(`tag "${tag}"`);
-      summary.textContent = \
-`${matches.length} result${matches.length === 1 ? "" : "s"}${parts.length ? " for " + parts.join(", ") : ""}.`;
+      summary.textContent = `${matches.length} result${matches.length === 1 ? "" : "s"}${parts.length ? " for " + parts.join(", ") : ""}.`;
     }
 
     list.innerHTML = matches.map(r => {
