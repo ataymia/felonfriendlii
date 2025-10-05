@@ -64,10 +64,22 @@ img { max-width: 100%; display: block; }
 /* Hero with Phoenix skyline */
 .hero { border-bottom: 1px solid var(--border); }
 .hero--skyline {
-  background:
-    url("../images/phoenix-skyline.jpg") top center no-repeat,
+  /* Put the image first so it’s visible; gradient sits behind */
+  background-image:
+    url("../images/phoenix-skyline.jpg"),
     linear-gradient(180deg, #f1f5f9 0%, #ffffff 40%);
-  background-size: cover, auto;
+  /* Keep the skyline anchored to the bottom and fully visible */
+  background-position:
+    bottom center,
+    top center;
+  background-repeat:
+    no-repeat,
+    no-repeat;
+  background-size:
+    cover,
+    auto;
+  /* Ensure enough vertical space that the skyline is visible */
+  min-height: 280px;
 }
 .hero-content { padding: 36px 16px 28px; }
 .hero-top { display: flex; align-items: center; justify-content: flex-start; }
