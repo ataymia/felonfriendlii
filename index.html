@@ -3,33 +3,50 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FelonyFriendlii</title>
+  <title>Felon Friendly Resources</title>
   <meta name="description" content="Resources and housing friendly to people with felony records." />
-  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="images/ffr-logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <nav class="container nav">
-      <a class="brand" href="./">
-        <img class="brand-logo" src="images/logo.svg" alt="FelonyFriendlii" />
-        <span class="brand-name">FelonyFriendlii</span>
+    <div class="container nav">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu">
+        <span class="badge">F</span>
+      </button>
+
+      <a class="brand" href="./" aria-label="Felon Friendly Resources Home">
+        <img class="brand-logo" src="images/ffr-logo.svg" alt="Felon Friendly Resources logo" />
       </a>
-      <ul class="nav-links">
-        <li><a href="./resources.html">Resources</a></li>
-        <li><a href="./housing-search.html">Housing Search</a></li>
-        <li><a href="./submit.html">Submit</a></li>
-        <li><a href="./about.html">About</a></li>
-      </ul>
+    </div>
+
+    <nav id="menu-panel" class="menu-panel" hidden>
+      <div class="container">
+        <ul class="menu-list">
+          <li><a href="./housing-search.html">Housing Search</a></li>
+          <li><a href="./submit.html">Submit</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Find resources that don't hold your past against you</h1>
-        <p class="muted">Curated places for housing, food, clothes, trades, and more — friendly to people with felony records.</p>
+    <section class="hero hero--skyline">
+      <div class="container hero-content">
+        <div class="hero-top">
+          <img class="hero-logo" src="images/ffr-logo.svg" alt="Felon Friendly Resources logo" />
+        </div>
+
+        <h1 class="hero-title">Find resources that welcome your future</h1>
+
+        <div class="memos" role="region" aria-label="Memos">
+          <div class="memo">Need a place? Check “Housing Search.”</div>
+          <div class="memo">Know a landlord who rents fairly? “Submit” it.</div>
+          <div class="memo">We’re adding more cities soon.</div>
+        </div>
+
         <form class="search" action="resources.html" method="get">
           <input name="q" type="search" placeholder="Search all resources" aria-label="Search all resources" />
           <button type="submit">Search</button>
@@ -74,7 +91,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> FelonyFriendlii</p>
+      <p>&copy; <span id="year"></span> Felon Friendly Resources</p>
     </div>
   </footer>
 </body>
