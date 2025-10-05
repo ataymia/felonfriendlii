@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit a Resource • FelonyFriendlii</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="./">
+        <img class="brand-logo" src="images/logo.svg" alt="FelonyFriendlii" />
+        <span class="brand-name">FelonyFriendlii</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="./resources.html">Resources</a></li>
+        <li><a href="./housing-search.html">Housing Search</a></li>
+        <li><a class="active" href="./submit.html">Submit</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Submit a Resource</h1>
+    <p class="muted">Have a resource that rents to or supports people with felony records? Share it below.</p>
+
+    <form class="stack" action="mailto:felonyfriendlii@example.com" method="post" enctype="text/plain">
+      <label>
+        Name of resource
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Website
+        <input type="url" name="website" placeholder="https://…" />
+      </label>
+      <label>
+        Category
+        <select name="category" required>
+          <option value="">Select a category</option>
+          <option value="apartments">Apartments</option>
+          <option value="halfway-houses">Halfway Houses</option>
+          <option value="trades">Trades</option>
+          <option value="food">Food</option>
+          <option value="clothes">Clothes</option>
+        </select>
+      </label>
+      <label>
+        Tags (comma-separated)
+        <input type="text" name="tags" placeholder="veteran, phoenix" />
+      </label>
+      <label>
+        Notes
+        <textarea name="notes" rows="5"></textarea>
+      </label>
+      <button type="submit">Send</button>
+    </form>
+
+    <p class="muted small">Note: This uses your email client to send. If you’d prefer a form backend, I can wire this to a free service like Formspree.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> FelonyFriendlii</p>
+    </div>
+  </footer>
+</body>
+</html>

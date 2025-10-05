@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resources • FelonyFriendlii</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a class="brand" href="./">
+        <img class="brand-logo" src="images/logo.svg" alt="FelonyFriendlii" />
+        <span class="brand-name">FelonyFriendlii</span>
+      </a>
+      <ul class="nav-links">
+        <li><a class="active" href="./resources.html">Resources</a></li>
+        <li><a href="./housing-search.html">Housing Search</a></li>
+        <li><a href="./submit.html">Submit</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Resources</h1>
+    <form class="search" action="resources.html" method="get">
+      <input name="q" type="search" placeholder="Search resources" aria-label="Search resources" />
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="filters">
+      <a class="chip" href="resources.html">All</a>
+      <a class="chip" href="resources.html?cat=apartments">Apartments</a>
+      <a class="chip" href="resources.html?cat=halfway-houses">Halfway Houses</a>
+      <a class="chip" href="resources.html?cat=trades">Trades</a>
+      <a class="chip" href="resources.html?cat=food">Food</a>
+      <a class="chip" href="resources.html?cat=clothes">Clothes</a>
+      <a class="chip" href="resources.html?tag=veteran">Veteran</a>
+    </div>
+
+    <div id="results-summary" class="muted" aria-live="polite"></div>
+    <div id="resources-list" class="cards"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> FelonyFriendlii</p>
+    </div>
+  </footer>
+</body>
+</html>
