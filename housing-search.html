@@ -3,24 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Housing Search • FelonyFriendlii</title>
-  <link rel="icon" href="images/logo.svg" type="image/svg+xml" />
+  <title>Housing Search • Felon Friendly Resources</title>
+  <link rel="icon" href="images/ffr-logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
 </head>
 <body>
   <header class="site-header">
-    <nav class="container nav">
-      <a class="brand" href="./">
-        <img class="brand-logo" src="images/logo.svg" alt="FelonyFriendlii" />
-        <span class="brand-name">FelonyFriendlii</span>
+    <div class="container nav">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu">
+        <span class="badge">F</span>
+      </button>
+      <a class="brand" href="./" aria-label="Felon Friendly Resources Home">
+        <img class="brand-logo" src="images/ffr-logo.svg" alt="Felon Friendly Resources logo" />
       </a>
-      <ul class="nav-links">
-        <li><a href="./resources.html">Resources</a></li>
-        <li><a class="active" href="./housing-search.html">Housing Search</a></li>
-        <li><a href="./submit.html">Submit</a></li>
-        <li><a href="./about.html">About</a></li>
-      </ul>
+    </div>
+    <nav id="menu-panel" class="menu-panel" hidden>
+      <div class="container">
+        <ul class="menu-list">
+          <li><a href="./housing-search.html">Housing Search</a></li>
+          <li><a href="./submit.html">Submit</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -32,7 +37,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> FelonyFriendlii</p>
+      <p>&copy; <span id="year"></span> Felon Friendly Resources</p>
     </div>
   </footer>
 </body>
