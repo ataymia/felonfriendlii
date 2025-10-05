@@ -1,11 +1,12 @@
 :root {
+  /* Logo-inspired slate theme */
   --bg: #ffffff;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --brand: #0ea5e9;
-  --brand-dark: #0284c7;
-  --border: #e5e7eb;
-  --tile-bg: #f8fafc;
+  --text: #111827;      /* near-black slate */
+  --muted: #6b7280;     /* slate-500 */
+  --brand: #374151;     /* slate-700 */
+  --brand-2: #4b5563;   /* slate-600 */
+  --border: #e5e7eb;    /* gray-200 */
+  --tile-bg: #f8fafc;   /* slate-50 */
 }
 
 * { box-sizing: border-box; }
@@ -19,46 +20,83 @@ html, body {
 }
 
 img { max-width: 100%; display: block; }
-
 .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
 
+/* Header with expandable F menu */
 .site-header {
-  position: sticky; top: 0; z-index: 10;
+  position: sticky; top: 0; z-index: 20;
   backdrop-filter: saturate(150%) blur(6px);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.85);
   border-bottom: 1px solid var(--border);
 }
+.nav { display: flex; align-items: center; gap: 14px; padding: 10px 0; }
+.brand-logo { height: 30px; width: auto; }
+.brand { display: inline-flex; align-items: center; text-decoration: none; color: inherit; }
 
-.nav { display: flex; align-items: center; gap: 16px; padding: 12px 0; }
+.menu-toggle {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: var(--brand);
+}
+.menu-toggle:hover { border-color: var(--brand-2); }
+.menu-toggle .badge {
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+}
 
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
-.brand-logo { width: 32px; height: 32px; }
-.brand-name { font-weight: 700; }
+.menu-panel {
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+}
+.menu-list {
+  list-style: none; margin: 0; padding: 8px 0; display: flex; gap: 12px;
+}
+.menu-list a {
+  display: inline-block; padding: 8px 10px; border-radius: 8px;
+  text-decoration: none; color: var(--text); border: 1px solid transparent;
+}
+.menu-list a:hover { border-color: var(--border); }
 
-.nav-links { display: flex; gap: 14px; list-style: none; margin: 0 0 0 auto; padding: 0; }
-.nav-links a { text-decoration: none; color: var(--text); padding: 6px 10px; border-radius: 6px; border: 1px solid transparent; }
-.nav-links a:hover { background: #f3f4f6; }
-.nav-links a.active { border-color: var(--border); }
+/* Hero with Phoenix skyline */
+.hero { border-bottom: 1px solid var(--border); }
+.hero--skyline {
+  background:
+    linear-gradient(180deg, #f1f5f9 0%, #ffffff 40%),
+    url("../images/phoenix-skyline.svg") top center repeat-x;
+  background-size: auto 140px, auto;
+}
+.hero-content { padding: 36px 16px 28px; }
+.hero-top { display: flex; align-items: center; justify-content: flex-start; }
+.hero-logo { width: 260px; max-width: 80%; height: auto; }
+.hero-title { margin: 16px 0 10px; font-size: 26px; color: var(--brand); }
 
-.hero { background: linear-gradient(180deg, #eff6ff, #ffffff); border-bottom: 1px solid var(--border); }
-.hero .container { padding: 40px 16px; }
-.hero h1 { margin: 0 0 10px; font-size: 28px; }
-.muted { color: var(--muted); }
-.small { font-size: 0.9rem; }
+.memos {
+  display: grid; gap: 10px; grid-template-columns: repeat(1, minmax(0, 1fr));
+  margin: 8px 0 10px;
+}
+@media (min-width: 640px) { .memos { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.memo {
+  background: #fff7ed;            /* warm note */
+  border: 1px dashed #fed7aa;     /* orange-200 */
+  color: #7c2d12;                 /* amber-900 */
+  border-radius: 10px;
+  padding: 10px 12px;
+}
 
-.search { display: flex; gap: 8px; margin-top: 16px; }
+.search { display: flex; gap: 8px; margin-top: 12px; }
 .search input[type="search"] { flex: 1; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); }
 .search button, .button, button {
   background: var(--brand); color: white; border: none; padding: 10px 14px; border-radius: 8px; cursor: pointer;
 }
-.search button:hover, .button:hover, button:hover { background: var(--brand-dark); }
+.search button:hover, .button:hover, button:hover { background: var(--brand-2); }
 
-.section-title { font-size: 20px; margin: 24px 0 12px; }
+.section-title { font-size: 20px; margin: 24px 0 12px; color: var(--brand); }
 
-.grid {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 @media (min-width: 768px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .tile {
