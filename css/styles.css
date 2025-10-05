@@ -66,7 +66,7 @@ img { max-width: 100%; display: block; }
 .hero--skyline {
   background:
     linear-gradient(180deg, #f1f5f9 0%, #ffffff 40%),
-    url("../images/phoenix-skyline.svg") top center repeat-x;
+    url("../images/phoenix-skyline.jpg") top center repeat-x;
   background-size: auto 140px, auto;
 }
 .hero-content { padding: 36px 16px 28px; }
