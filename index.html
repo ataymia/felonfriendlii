@@ -41,10 +41,25 @@
 
         <h1 class="hero-title">Find resources that welcome your future</h1>
 
-        <div class="memos" role="region" aria-label="Memos">
-          <div class="memo">Need a place? Check “Housing Search.”</div>
-          <div class="memo">Know a landlord who rents fairly? “Submit” it.</div>
-          <div class="memo">We’re adding more cities soon.</div>
+        <!-- City selector -->
+        <div class="city-select" aria-label="Select city">
+          <label for="city-select">City:</label>
+          <select id="city-select" name="city">
+            <option value="phx">Phoenix, AZ</option>
+            <option value="tucson">Tucson, AZ</option>
+            <option value="la">Los Angeles, CA</option>
+            <option value="nyc">New York, NY</option>
+            <option value="chi">Chicago, IL</option>
+          </select>
+        </div>
+
+        <!-- Memos carousel -->
+        <div class="memos-carousel" role="region" aria-label="Memos">
+          <button class="memo-prev" aria-label="Previous memo" type="button" title="Previous">‹</button>
+          <div class="memo-viewport" aria-live="polite">
+            <div class="memo-slide"></div>
+          </div>
+          <button class="memo-next" aria-label="Next memo" type="button" title="Next">›</button>
         </div>
 
         <form class="search" action="resources.html" method="get">
@@ -52,6 +67,130 @@
           <button type="submit">Search</button>
         </form>
       </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // City config: skyline asset and memo slides per city.
+          const CITY_DATA = {
+            phx: {
+              name: 'Phoenix, AZ',
+              skyline: 'phoenix-skyline.jpg',
+              memos: [
+                'FELONS EAT FREE AT APPLEBEES UNTIL OCT 16 2025',
+                'Oct 2, 2025: A bill passed to make expungement easier for non-violent felonies'
+              ]
+            },
+            tucson: {
+              name: 'Tucson, AZ',
+              skyline: 'phoenix-skyline.jpg', // placeholder until tucson-specific image
+              memos: [
+                'Tucson: Local job fair for returning citizens this Saturday',
+                'Tucson: Free legal clinic for expungement screening next week'
+              ]
+            },
+            la: {
+              name: 'Los Angeles, CA',
+              skyline: 'phoenix-skyline.jpg', // placeholder
+              memos: [
+                'LA: Housing resource center expanded intake hours',
+                'LA: Free transit passes for job interviews this month'
+              ]
+            },
+            nyc: {
+              name: 'New York, NY',
+              skyline: 'phoenix-skyline.jpg', // placeholder
+              memos: [
+                'NYC: Record sealing workshop on Saturday',
+                'NYC: New landlord incentives for fair-chance housing'
+              ]
+            },
+            chi: {
+              name: 'Chicago, IL',
+              skyline: 'phoenix-skyline.jpg', // placeholder
+              memos: [
+                'Chicago: Training stipends available for apprenticeships',
+                'Chicago: Fresh Start fair at Daley Center next week'
+              ]
+            }
+          };
+
+          const qs = new URL(window.location.href).searchParams;
+          const stored = localStorage.getItem('ffr:city');
+          let city = (qs.get('city') || stored || 'phx').toLowerCase();
+          if (!CITY_DATA[city]) city = 'phx';
+
+          const hero = document.querySelector('.hero--skyline');
+          function applyCity(c) {
+            const data = CITY_DATA[c] || CITY_DATA.phx;
+            if (hero) {
+              hero.style.setProperty('--skyline-image', "url('../images/" + data.skyline + "')");
+            }
+          }
+
+          const viewport = document.querySelector('.memo-viewport');
+          const prev = document.querySelector('.memo-prev');
+          const next = document.querySelector('.memo-next');
+
+          let index = 0;
+          let timer = null;
+
+          function renderMemo(c, i) {
+            const data = CITY_DATA[c] || CITY_DATA.phx;
+            const slides = data.memos && data.memos.length ? data.memos : CITY_DATA.phx.memos;
+            const text = slides[i % slides.length];
+            if (viewport) viewport.innerHTML = '<div class="memo-slide">' + text + '</div>';
+          }
+
+          function startTimer() {
+            stopTimer();
+            timer = setInterval(() => {
+              const data = CITY_DATA[city] || CITY_DATA.phx;
+              const len = (data.memos && data.memos.length) ? data.memos.length : CITY_DATA.phx.memos.length;
+              index = (index + 1) % len;
+              renderMemo(city, index);
+            }, 10000);
+          }
+
+          function stopTimer() { if (timer) { clearInterval(timer); timer = null; } }
+
+          function resetCarousel(c) { index = 0; renderMemo(c, index); startTimer(); }
+
+          const sel = document.getElementById('city-select');
+          if (sel) {
+            sel.value = city;
+            sel.addEventListener('change', () => {
+              city = sel.value;
+              localStorage.setItem('ffr:city', city);
+              applyCity(city);
+              resetCarousel(city);
+            });
+          }
+
+          if (prev) prev.addEventListener('click', () => {
+            const data = CITY_DATA[city] || CITY_DATA.phx;
+            const len = (data.memos && data.memos.length) ? data.memos.length : CITY_DATA.phx.memos.length;
+            index = (index - 1 + len) % len;
+            renderMemo(city, index);
+            startTimer();
+          });
+
+          if (next) next.addEventListener('click', () => {
+            const data = CITY_DATA[city] || CITY_DATA.phx;
+            const len = (data.memos && data.memos.length) ? data.memos.length : CITY_DATA.phx.memos.length;
+            index = (index + 1) % len;
+            renderMemo(city, index);
+            startTimer();
+          });
+
+          if (viewport) {
+            viewport.addEventListener('mouseenter', stopTimer);
+            viewport.addEventListener('mouseleave', startTimer);
+          }
+
+          applyCity(city);
+          resetCarousel(city);
+        });
+      </script>
     </section>
 
     <section class="container">
