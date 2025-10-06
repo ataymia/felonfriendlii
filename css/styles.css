@@ -61,14 +61,13 @@ img { max-width: 100%; display: block; }
 }
 .menu-list a:hover { border-color: var(--border); }
 
-/* Hero with Phoenix skyline */
+/* Hero with location-based skyline (defaults to Phoenix) */
 .hero { border-bottom: 1px solid var(--border); }
 .hero--skyline {
-  /* Put the image first so it’s visible; gradient sits behind */
+  /* Use a CSS variable so JS can switch cities; default to Phoenix */
   background-image:
-    url("../images/phoenix-skyline.jpg"),
+    var(--skyline-image, url("../images/phoenix-skyline.jpg")),
     linear-gradient(180deg, #f1f5f9 0%, #ffffff 40%);
-  /* Keep the skyline anchored to the bottom and fully visible */
   background-position:
     bottom center,
     top center;
@@ -78,14 +77,16 @@ img { max-width: 100%; display: block; }
   background-size:
     cover,
     auto;
-  /* Ensure enough vertical space that the skyline is visible */
+  /* Ensure enough vertical space to show the skyline */
   min-height: 280px;
 }
 .hero-content { padding: 36px 16px 28px; }
 .hero-top { display: flex; align-items: center; justify-content: flex-start; }
 .hero-logo { width: 260px; max-width: 80%; height: auto; }
-.hero-title { margin: 16px 0 10px; font-size: 26px; color: var(--brand); }
+/* White title for contrast on photo/gradient */
+.hero-title { margin: 16px 0 10px; font-size: 26px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.4); }
 
+/* Old memo chip layout (unused on homepage now, safe to keep for future use) */
 .memos {
   display: grid; gap: 10px; grid-template-columns: repeat(1, minmax(0, 1fr));
   margin: 8px 0 10px;
@@ -97,6 +98,74 @@ img { max-width: 100%; display: block; }
   color: #7c2d12;                 /* amber-900 */
   border-radius: 10px;
   padding: 10px 12px;
+}
+
+/* City selector */
+.city-select { display: inline-flex; gap: 8px; align-items: center; margin: 8px 0 12px; }
+.city-select label { color: #fff; font-weight: 600; }
+.city-select select { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); }
+
+/* Memos carousel */
+.memos-carousel {
+  /* Grid layout ensures arrows stay on opposite sides: [prev] [content] [next] */
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+
+  /* Stronger semi-transparent backdrop with a light blur for legibility */
+  padding: 14px 12px;
+  background: rgba(17, 24, 39, 0.60); /* slate-900 @ 60% */
+  backdrop-filter: blur(3px) saturate(110%);
+  -webkit-backdrop-filter: blur(3px) saturate(110%);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.20);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.20);
+}
+
+.memo-viewport {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2; /* center column in the grid */
+  text-align: center;
+}
+
+.memo-slide {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(0,0,0,.35);
+}
+
+/* Arrows as grid children (no absolute positioning) */
+.memo-prev, .memo-next {
+  grid-row: 1;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .15s ease;
+}
+.memo-prev { grid-column: 1; }
+.memo-next { grid-column: 3; }
+
+.memo-prev:hover, .memo-next:hover { background: rgba(0,0,0,0.75); }
+.memo-prev:focus-visible, .memo-next:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+@media (max-width: 420px) {
+  .memos-carousel { padding: 10px 8px; gap: 6px; }
+  .memo-prev, .memo-next { width: 32px; height: 32px; }
+  .memo-viewport { min-height: 46px; }
 }
 
 .search { display: flex; gap: 8px; margin-top: 12px; }
