@@ -123,7 +123,8 @@
           function applyCity(c) {
             const data = CITY_DATA[c] || CITY_DATA.phx;
             if (hero) {
-              hero.style.setProperty('--skyline-image', "url('images/" + data.skyline + '")');
+              // Set path relative to the CSS file that consumes the var
+              hero.style.setProperty('--skyline-image', "url('../images/" + data.skyline + "')");
             }
           }
 
