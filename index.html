@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Felon Friendly Resources</title>
+  <title>Felon Friendlii Resources</title>
   <meta name="description" content="Resources and housing friendly to people with felony records." />
-  <link rel="icon" href="images/ffr-logo.png" type="image/png" />
+  <link rel="icon" href="images/ffr-logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
 </head>
@@ -16,8 +16,8 @@
         <span class="badge">F</span>
       </button>
 
-      <a class="brand" href="./" aria-label="Felon Friendly Resources Home">
-        <img class="brand-logo" src="images/ffr-logo.png" alt="Felon Friendly Resources logo" />
+      <a class="brand" href="./" aria-label="Felon Friendlii Resources Home">
+        <img class="brand-logo" src="images/ffr-logo.svg" alt="Felon Friendlii Resources logo" />
       </a>
     </div>
 
@@ -36,7 +36,7 @@
     <section class="hero hero--skyline">
       <div class="container hero-content">
         <div class="hero-top">
-          <img class="hero-logo" src="images/ffr-logo.png" alt="Felon Friendly Resources logo" />
+          <img class="hero-logo" src="images/ffr-logo.svg" alt="Felon Friendlii Resources logo" />
         </div>
 
         <h1 class="hero-title">Find resources that welcome your future</h1>
@@ -70,7 +70,7 @@
 
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-          // City config: skyline asset and memo slides per city.
+          // City config: skyline asset and memos slides per city.
           const CITY_DATA = {
             phx: {
               name: 'Phoenix, AZ',
@@ -123,7 +123,7 @@
           function applyCity(c) {
             const data = CITY_DATA[c] || CITY_DATA.phx;
             if (hero) {
-              hero.style.setProperty('--skyline-image', "url('../images/" + data.skyline + "')");
+              hero.style.setProperty('--skyline-image', "url('../images/" + data.skyline + '")');
             }
           }
 
@@ -201,7 +201,7 @@
           <div class="tile-title">Apartments</div>
         </a>
         <a class="tile" href="resources.html?cat=halfway-houses" aria-label="Halfway Houses">
-          <div class="tile-emoji" aria-hidden>🏠</div>
+          <div class="tile-emoji" aria-hidden>🏚️</div>
           <div class="tile-title">Halfway Houses</div>
         </a>
         <a class="tile" href="resources.html?cat=trades" aria-label="Trades">
@@ -221,7 +221,7 @@
           <div class="tile-title">Home Search</div>
         </a>
         <a class="tile" href="resources.html?tag=veteran" aria-label="Veteran">
-          <div class="tile-emoji" aria-hidden>🎖️</div>
+          <div class="tile-emoji" aria-hidden>🫶</div>
           <div class="tile-title">Veteran</div>
         </a>
       </div>
@@ -230,7 +230,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Felon Friendly Resources</p>
+      <p>&copy; <span id="year"></span> Felon Friendlii Resources</p>
     </div>
   </footer>
 </body>
